@@ -97,40 +97,29 @@ console.log(getGreatestValue(15, 10)); // 15 を表示
 console.log(getGreatestValue(1, 2, 3, 4, 5)); // 5 を表示
 console.log(getGreatestValue(1, 10, 3, 4, 5)); // 10 を表示
 
-// This is a flattened array
+// ナイトメア
+console.log(
+  flatten([
+    [1, 2, 3],
+    [4, 5, 6],
+  ])
+); // [1, 2, 3, 4, 5, 6]
+console.log(flatten([1, 2, 3, [4, 5, 6]])); // [1, 2, 3, 4, 5, 6]
+console.log(flatten([[1], [2], [3], [4, 5, 6]])); // [1, 2, 3, 4, 5, 6]
 
-// Input:
-
-let arr = [1,44, [2, [3,9], 67], 9];
-
- 
-
-// Function Defin 
-
-function recur(a) {
-
+function flatten(array) {
+  // flattenされた入れる
   let newArr = [];
 
-  for (let i =0 ; i < a.length; i++) {
-
-      const element = a[i];
-
+  for (let i =0 ; i < array.length; i++) {
+      const element = array[i];
+      // 配列の中に配列があるなら
       if (Array.isArray(element)) {
-
-          // Function calling itself recursion
-
-          newArr.push(...recur(element))
-
+          // 再帰呼び出し
+          newArr.push(...flatten(element))
       } else  {
-
           newArr.push(element)
-
       }
-
   }
-
-
-
   return newArr;
-
 }
