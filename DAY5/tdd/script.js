@@ -5,6 +5,19 @@
 let actual;
 let expected;
 
+// ファイル全体で使用する テスト用の関数
+function validateTest(actual, expected){
+  if (actual === expected) {
+    console.log("OK! Test PASSED.");
+  } else {
+    console.error("Test FAILED. Try again!");
+    console.group("Result:");
+    console.log("  actual:", actual);
+    console.log("expected:", expected);
+    console.groupEnd();
+  }
+}
+
 // テストする対象のコード
 function add(a, b) {
   return a + b;
@@ -13,15 +26,7 @@ function add(a, b) {
 actual = add(1, 2); // テストを行う式（の演算結果）を actual に代入
 expected = 3; // 式の期待値を expected に代入
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 /**
  * @param {string} firstName - 下の名前
@@ -35,15 +40,7 @@ function getFullName(firstName, lastName) {
 actual = getFullName("Ken", "Watanabe");
 expected = "Ken Watanabe";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 /**
  * @param {string} name - 人の名前
@@ -61,28 +58,12 @@ function simpleGreeting(name, isFormal) {
 actual = simpleGreeting("Amy", true);
 expected = "Hello, Amy-san.";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = simpleGreeting("Matt", false);
 expected = "Hello, Matt.";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 
 /**
@@ -102,28 +83,12 @@ function isGreaterThan(num1, num2){
 actual = isGreaterThan(5, 4);
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isGreaterThan(3, 4);
 expected = false;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 /**
  * @param {string} name - 人の名前
@@ -136,15 +101,7 @@ function greeting(name) {
 actual = greeting("Kimiko");
 expected = "Hello, Kimiko!";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 /**
  * @param {"+"|"-"|"*"|"/"|"**"|"%"} operator - 使用する算術演算子を表す文字列
@@ -172,81 +129,33 @@ function operate(operator, operand1, operand2){
 actual = operate("+", 1, 2);
 expected = 3;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = operate("-", 100, 33);
 expected = 67;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 // *, /, **, % を使ってさらにテストを書いてみましょう
 actual = operate("*", 2, 3);
 expected = 6;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = operate("**", 2, 8);
 expected = 256;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = operate("/", 9, 2);
 expected = 4.5;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = operate("%", 9, 2);
 expected = 1;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 /**
  * @param {string} color - 確認したい色の名前
@@ -264,81 +173,33 @@ function isRainbowColor(color){
 actual = isRainbowColor("red");
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isRainbowColor("rEd");
-expected = true;
+expected = false;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isRainbowColor("Brown");
 expected = false;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 // 他の色を確認するテストを書きましょう
 actual = isRainbowColor("blue");
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isRainbowColor("yellow");
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isRainbowColor("black");
 expected = false;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 // 中級演習
 
@@ -361,55 +222,23 @@ function typeOfFriendly(data){
 actual = typeOfFriendly("Hello");
 expected = "与えられた引数は文字列です。";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = typeOfFriendly(5);
 expected = "与えられた引数は数値です。";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 // 他の値の型を確認するテストも書きましょう
 actual = typeOfFriendly(true);
 expected = "与えられた引数は真偽値です。";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = typeOfFriendly();
 expected = "与えられた引数は定義されていません。";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 /**
  * @param {"=="|"==="|"<"|"<="|">"|">="} comparision - 使用したい比較演算子
@@ -437,68 +266,28 @@ function compare(comparision, operand1, operand2){
 actual = compare("===", 1, 1);
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = compare("===", 1, "1");
 expected = false;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = compare("==", 1, "1");
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 // 他の演算子を使ったテストも書いてみましょう。
 actual = compare("<", "2", "3");
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = compare("<=", 1, "1");
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 // 応用演習
 /**
@@ -515,28 +304,12 @@ function concatenateNumbers(num1, num2 = [], num3 = []){
 actual = concatenateNumbers(7);
 expected = "7";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = concatenateNumbers(7, 9);
 expected = "79";
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 // 必要に応じてテストを書きましょう。
 
@@ -555,68 +328,29 @@ function halfLife(quantity, period, time){
 actual = halfLife(1, 1, 1);
 expected = 1 / 2;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = halfLife(8, 4, 2);
 expected = 4 * Math.SQRT2;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = halfLife(2, 2, 4);
 expected = 1 / 2;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 // 必要に応じてテストを書きましょう。
-actual = halfLife(3, 3, 6);
-expected = 1 / 2;
-
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
 
 actual = halfLife(3, 3, 6);
 expected = 3 / 4;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
+
+actual = halfLife(10, 5, 10);
+expected = 5 / 2;
+
+validateTest(actual, expected);
 
 // ナイトメア
 /**
@@ -643,117 +377,45 @@ function isPrime(num){
 actual = isPrime(1);
 expected = false;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isPrime(2);
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isPrime(3);
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isPrime(4);
 expected = false;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isPrime(5);
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isPrime(104728);
 expected = false;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isPrime(104729);
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 // 必要に応じてテストを書きましょう。
 actual = isPrime(104731);
-expected = true;
+expected = false;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
 
 actual = isPrime(113);
 expected = true;
 
-if (actual === expected) {
-  console.log("OK! Test PASSED.");
-} else {
-  console.error("Test FAILED. Try again!");
-  console.group("Result:");
-  console.log("  actual:", actual);
-  console.log("expected:", expected);
-  console.groupEnd();
-}
+validateTest(actual, expected);
